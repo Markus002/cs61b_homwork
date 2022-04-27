@@ -45,4 +45,16 @@ public class Planet {
         double dy_squared = Math.pow(yyPos - b.yyPos, 2);
         return Math.sqrt(dx_squared + dy_squared);
     }
+
+    /**
+     * Calculates the force exerted by planet b
+     * @param b The other planet
+     * @return the exerted force
+     */
+    public double calcForceExertedBy(Planet b) {
+        double distance = this.calcDistance(b);
+        double grav_const = 6.67e-11;
+        double force = grav_const*this.mass*b.mass/Math.pow(distance,2);
+        return force;
+    }
 }
