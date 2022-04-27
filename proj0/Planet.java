@@ -1,9 +1,9 @@
-public class Body {
+public class Planet {
     public double xxPos, yyPos, xxVel, yyVel, mass;
     public String imgFileName;
 
     /**
-     * Constructor of a Body
+     * Constructor of a Planet
      * @param xP
      * @param yP
      * @param xV
@@ -11,7 +11,7 @@ public class Body {
      * @param m
      * @param img
      */
-    public Body(double xP, double yP, double xV, double yV, double m, String img) {
+    public Planet(double xP, double yP, double xV, double yV, double m, String img) {
         xxPos = xP;
         yyPos = yP;
         xxVel = xV;
@@ -21,10 +21,10 @@ public class Body {
     }
 
     /**
-     * Clone Body b to new instance
+     * Clone Planet b to new instance
      * @param b The instance to be cloned
      */
-    public Body(Body b) {
+    public Planet(Planet b) {
         xxPos = b.xxPos;
         yyPos = b.yyPos;
         xxVel = b.xxVel;
