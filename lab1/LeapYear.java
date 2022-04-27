@@ -2,7 +2,11 @@
  *  @author Miao Peilin
  */
 public class LeapYear {
-
+    /**
+     * Check whether a year is a leap year
+     * @param year to be analyzed
+     * @return a boolean value indicating whether or not a year is a leap year
+     */
     public static boolean isLeapYear(int year) {
         if (year % 400 == 0)
             return true;
