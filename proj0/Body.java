@@ -26,7 +26,7 @@ public class Body {
      */
     public Body(Body b) {
         xxPos = b.xxPos;
-        yypos = b.yyPos;
+        yyPos = b.yyPos;
         xxVel = b.xxVel;
         yyVel = b.yyVel;
         mass = b.mass;
