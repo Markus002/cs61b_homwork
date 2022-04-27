@@ -19,4 +19,17 @@ public class Body {
         mass = m;
         imgFileName = img;
     }
+
+    /**
+     * Clone Body b to new instance
+     * @param b The instance to be cloned
+     */
+    public Body(Body b) {
+        xxPos = b.xxPos;
+        yypos = b.yyPos;
+        xxVel = b.xxVel;
+        yyVel = b.yyVel;
+        mass = b.mass;
+        imgFileName = b.imgFileName;
+    }
 }
