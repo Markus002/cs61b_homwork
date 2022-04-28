@@ -109,4 +109,19 @@ public class Planet {
         }
         return net_force_y;
     }
+
+    /**
+     * Update the velocity and position of a planet
+     * @param dt A small time interval
+     * @param fX The net force in the horizontal direction
+     * @param fY The net force in the vertical direction
+     */
+    public void update(double dt, double fX, double fY) {
+        double aX = fX / this.mass;
+        double aY = fY / this.mass;
+        xxVel += aX * dt;
+        yyVel += aY * dt;
+        xxPos += xxVel * dt;
+        yyPos += yyVel * dt;
+    }
 }
