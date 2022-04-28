@@ -30,7 +30,7 @@ public class NBody{
             double xV = in.readDouble();
             double yV = in.readDouble();
             double m = in.readDouble();
-            String img = in.readString();
+            String img = "images/" + in.readString();
             Planet planet = new Planet(xP, yP, xV, yV, m, img);
             planets[i] = planet;
         }
@@ -50,7 +50,11 @@ public class NBody{
         StdDraw.setScale(-radius, radius);
         StdDraw.clear();
         StdDraw.picture(0, 0, backgroud_img);
-        StdDraw.show();
 
+        for (Planet planet : planets) {
+            planet.draw();
+        }
+
+        StdDraw.show();
     }
 }
