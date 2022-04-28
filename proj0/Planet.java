@@ -57,4 +57,26 @@ public class Planet {
         double force = grav_const*this.mass*b.mass/Math.pow(distance,2);
         return force;
     }
+
+    /**
+     * Calculates the force in the horizontal direction
+     * @param b The other planet
+     * @return The force in the horizontal direction
+     */
+    public double calcForceExertedByX(Planet b) {
+        double force = this.calcForceExertedBy(b);
+        double force_x = force * (b.xxPos - xxPos) / this.calcDistance(b);
+        return force_x;
+    }
+
+    /**
+     * Calculates the force in the vertical direction
+     * @param b The other planet
+     * @return The force in the vertical direction
+     */
+    public double calcForceExertedByY(Planet b) {
+        double force = this.calcForceExertedBy(b);
+        double force_y = force * (b.yyPos - yyPos) / this.calcDistance(b);
+        return force_y;
+    }
 }
