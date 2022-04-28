@@ -79,4 +79,34 @@ public class Planet {
         double force_y = force * (b.yyPos - yyPos) / this.calcDistance(b);
         return force_y;
     }
+
+    /**
+     * Calculates the net force in the horizontal direction
+     * @param planets An array of planets
+     * @return
+     */
+    public double calcNetForceExertedByX(Planet[] planets){
+        double net_force_x = 0;
+        for (int i = 0; i < planets.length; i++) {
+            if (this.equals(planets[i]))
+                continue;
+            net_force_x += this.calcForceExertedByX(planets[i]);
+        }
+        return net_force_x;
+    }
+
+    /**
+     * Calculates the net force in the vertical direction
+     * @param planets An array of planets
+     * @return
+     */
+    public double calcNetForceExertedByY(Planet[] planets){
+        double net_force_y = 0;
+        for (int i = 0; i < planets.length; i++) {
+            if (this.equals(planets[i]))
+                continue;
+            net_force_y += this.calcForceExertedByY(planets[i]);
+        }
+        return net_force_y;
+    }
 }
