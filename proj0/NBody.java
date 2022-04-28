@@ -49,12 +49,49 @@ public class NBody{
         String backgroud_img = "images/starfield.jpg";
         StdDraw.setScale(-radius, radius);
         StdDraw.clear();
-        StdDraw.picture(0, 0, backgroud_img);
 
-        for (Planet planet : planets) {
-            planet.draw();
+        
+        StdDraw.enableDoubleBuffering();
+
+        double time = 0;
+        while (time < T){
+            // Calculate net forces
+            double[] xForces = new double[planets.length];
+            double[] yForces = new double[planets.length];
+            for (int i = 0; i < planets.length; i++) {
+                double net_force_x = planets[i].calcNetForceExertedByX(planets);
+                double net_force_y = planets[i].calcNetForceExertedByY(planets);
+                xForces[i] = net_force_x;
+                yForces[i] = net_force_y;
+            }
+
+            // Update each planet
+            for (int i = 0; i < planets.length; i++)
+                planets[i].update(dt, xForces[i], yForces[i]);
+            
+            // Draw background
+            StdDraw.picture(0, 0, backgroud_img);
+
+            // Draw all the planets
+            for (Planet planet : planets)
+                planet.draw();
+            
+            // Show offscreen buffer
+            StdDraw.show();
+
+            // Pause for 10 milliseconds
+            StdDraw.pause(10);
+
+            time += dt;
         }
-
-        StdDraw.show();
+    
+        // Print the end state
+        StdOut.printf("%d\n", planets.length);
+        StdOut.printf("%.2e\n", radius);
+        for (int i = 0; i < planets.length; i++) {
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                        planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
+                        planets[i].yyVel, planets[i].mass, planets[i].imgFileName);   
+        }
     }
 }
